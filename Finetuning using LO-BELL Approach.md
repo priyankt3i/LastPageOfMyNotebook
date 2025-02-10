@@ -1,11 +1,11 @@
-LO-BELL" sounds like a good mnemonic device to remember some important fine-tuning steps: 
+### LO-BELL" sounds like a good mnemonic device to remember some important fine-tuning steps: 
 
 * **L**ayers (Replace or modify for the new task) 
 * **O**ptimizer (Choose the right optimizer like AdamW, SGD)
 * **B**atch size (Adjust based on memory and stability)
 * **E**pochs (Find the right number to avoid overfitting)
 * **L**oss Fucntion (Pick the appropriate loss function for your task)
-- **L**earning rate (Set it low for fine-tuning)  
+* **L**earning rate (Set it low for fine-tuning)  
 
 A new ML mnemonic! ????????
 
