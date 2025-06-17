@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fluttering Butterfly Loader</title>
+    <style>
+        /* * Converted SCSS to standard CSS.
+         * The original code used variables and nesting, which are not standard CSS features.
+         * I've flattened the selectors and replaced the variable with its value.
+        */
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* Changed background to transparent for use as a loader */
+            background: transparent;
+        }
+        
+        /* The main container for the butterfly animation */
+        .butterfly {
+            position: relative;
+            transform-style: preserve-3d;
+            /* Initial 3D orientation of the butterfly */
+            transform: rotateX(60deg) rotateY(30deg) rotateZ(-50deg);
+            width: 60px;
+        }
+
+        /* The body of the butterfly, created using a pseudo-element */
+        .butterfly::before {
+            content: '';
+            display: block;
+            position: absolute;
+            background: orange; /* orange with 50% opacity */
+            border-radius: 40%;
+            width: 30px;
+            height: 100px;
+            top: -15px;
+            left: 50%;
+            margin-left: -10px; /* Center the body */
+            transform: rotatey(100deg);
+        }
+
+        /* Container for each wing */
+        .wing {
+            display: block;
+            position: absolute;
+        }
+
+        /* Animation for the left wing */
+        .wing:first-child {
+            animation: left 350ms infinite alternate;
+            /* Ensures animation is smooth */
+            animation-fill-mode: reverse; 
+            z-index: 3; /* Places the left wing above the right */
+        }
+
+        /* Animation for the right wing */
+        .wing:last-child {
+            right: 0;
+            animation: right 350ms infinite alternate;
+            /* Ensures animation is smooth */
+            animation-fill-mode: reverse; 
+            z-index: 1; /* Places the right wing below the left */
+        }
+        
+        /* Styling for the parts of the wings */
+        .wing .fly, .wing .fly::after {
+            background: #ac166f;
+            transform-origin: 100% 50%; /* Sets the pivot point for wing flapping */
+            overflow: hidden;
+            position: absolute;
+            border-radius: 50%;
+            right: 0;
+            top: 0;
+        }
+        
+        /* Upper part of the wing */
+        .wing .fly:first-child {
+            height: 80px;
+            width: 130px;
+            top: 2px;
+            transform: rotateZ(30deg);
+        }
+
+        /* Lower part of the wing */
+        .wing .fly:last-child {
+            height: 80px;
+            width: 100px;
+            transform: rotateZ(-30deg);
+        }
+
+        /* Main container for the "waving" motion */
+        .wave {
+            animation-name: wave-hand;
+            animation-duration: 10s;
+            animation-iteration-count: infinite;
+            transform-origin: 50% 50%; /* Rotate around the center */
+        }
+
+        /* Keyframes for the left wing flapping animation */
+        @keyframes left {
+            0% {
+                transform: rotateY(-60deg);
+            }
+            100% {
+                transform: rotateY(50deg);
+            }
+        }
+
+        /* Keyframes for the right wing flapping animation */
+        @keyframes right {
+            0% {
+                transform: rotateY(180deg);
+            }
+            100% {
+                transform: rotateY(80deg);
+            }
+        }
+        
+        /* Keyframes for the overall waving motion of the butterfly */
+        @keyframes wave-hand {
+            0% { transform: rotate(0.0deg) }
+            10% { transform: rotate(40.0deg) }
+            20% { transform: rotate(-20.0deg) }
+            30% { transform: rotate(40.0deg) }
+            40% { transform: rotate(-6.0deg) }
+            50% { transform: rotate(17.0deg) }
+            60% { transform: rotate(0.0deg) }
+            100% { transform: rotate(0.0deg) }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- This div applies the "waving" animation to the entire butterfly -->
+    <div class="wave">
+        <!-- This is the main butterfly container -->
+        <div class="butterfly">
+            <!-- Left wing -->
+            <div class="wing">
+                <div class="fly"></div>
+                <div class="fly"></div>
+            </div>
+            <!-- Right wing -->
+            <div class="wing">
+                <div class="fly"></div>
+                <div class="fly"></div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
